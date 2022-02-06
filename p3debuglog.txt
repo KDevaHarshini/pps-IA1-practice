@@ -1,4 +1,4 @@
- gcc -g p3original.c
+ gcc -g p3final.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,22 +16,39 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x81b: file p3original.c, line 25.
+Breakpoint 1 at 0x81b: file p3final.c, line 25.
 (gdb) r
 Starting program: /home/runner/pps-IA1-practice-1/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p3original.c:25
+Breakpoint 1, main () at p3final.c:25
 25    n=input_n();
 (gdb) n
 Enter the number :
 5
 26    sum=sum_n(n);
-(gdb) n
-27    output(sum,n);
-(gdb) n
-28    return 0;
+(gdb) s
+sum_n (n=5) at p3final.c:11
+11    int i,sum=0;
+(gdb) s
+12    for(i=1; i<=n; i++)
+(gdb) s
+14    sum = sum + i;
+(gdb) s
+12    for(i=1; i<=n; i++)
+(gdb) s
+14    sum = sum + i;
+(gdb) s
+12    for(i=1; i<=n; i++)
+(gdb) s
+14    sum = sum + i;
+(gdb) s
+12    for(i=1; i<=n; i++)
+(gdb) s
+14    sum = sum + i;
+(gdb) s
+12    for(i=1; i<=n; i++)
 (gdb) c
 Continuing.
-Sum = 15[Inferior 1 (process 533) exited normally]
+Sum = 15[Inferior 1 (process 1070) exited normally]
 (gdb) 
