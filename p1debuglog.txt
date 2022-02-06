@@ -1,4 +1,4 @@
- gcc -g p1original.c
+gcc -g p1final.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,26 +16,34 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x7b1: file p1original.c, line 16.
+Breakpoint 1 at 0x7b1: file p1final.c, line 16.
 (gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
+Starting program: /home/runner/pps-IA1-practice-1/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p1original.c:16
+Breakpoint 1, main () at p1final.c:16
 16  {
 (gdb) n
 18    input(&a,&b);
 (gdb) n
-Enter two numbers 
-1
-2
+Enter two numbers1 2
 19    add(a,b,&sum);
-(gdb) n
+(gdb) s
+add (a=1, b=2, sum=0x7fff22f3e6e4) at p1final.c:9
+9     *sum = a+b;
+(gdb) s
+10  }
+(gdb) s
+main () at p1final.c:20
 20    output(a,b,sum);
-(gdb) n
-Sum of 1 + 2 is 3
-21    return 0;
+(gdb) s
+output (a=1, b=2, sum=3) at p1final.c:13
+13    printf("Sum of %d + %d is %d\n",a,b,sum);
+(gdb) s
+__printf (format=0x55bdab8008bc "Sum of %d + %d is %d\n") at printf.c:28
+28  printf.c: No such file or directory.
 (gdb) c
 Continuing.
-[Inferior 1 (process 548) exited normally]
-(gdb) 
+Sum of 1 + 2 is 3
+[Inferior 1 (process 716) exited normally]
+(gdb)  
