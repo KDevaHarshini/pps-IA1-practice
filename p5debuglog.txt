@@ -1,4 +1,4 @@
-gcc -g p5original.c
+ gcc -g p5final.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,22 +16,31 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x81d: file p5original.c, line 28.
+Breakpoint 1 at 0x81d: file p5final.c, line 28.
 (gdb) r
 Starting program: /home/runner/pps-IA1-practice-1/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p5original.c:28
+Breakpoint 1, main () at p5final.c:28
 28    s=input();
 (gdb) n
-Enter a number to find out the square root of: 3
+Enter a number to find out the square root of: 5
 29    s1=squareroot(s);
-(gdb) n
-30    output(s,s1);
-(gdb) n
-Square root of given input 3.00 is = 1.73
-31    return 0;
+(gdb) s
+squareroot (n=5) at p5final.c:11
+11    float x = n;
+(gdb) s
+12    float y = 1;
+(gdb) s
+13    float e = 0.000001;
+(gdb) s
+14    while(x - y > e)
+(gdb) s
+16    x = (x+y)/2;
+(gdb) s
+17    y = n/x;
 (gdb) c
 Continuing.
-[Inferior 1 (process 2334) exited normally]
+Square root of given input 5.00 is = 2.24
+[Inferior 1 (process 155) exited normally]
 (gdb) 
