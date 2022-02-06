@@ -1,4 +1,4 @@
- gcc -g p2original.c
+gcc -g p2final.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,12 +16,12 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x844: file p2original.c, line 26.
+Breakpoint 1 at 0x844: file p2final.c, line 26.
 (gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
+Starting program: /home/runner/pps-IA1-practice-1/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p2original.c:26
+Breakpoint 1, main () at p2final.c:26
 26    a=input();
 (gdb) n
 Enter the numbers
@@ -29,16 +29,24 @@ Enter the numbers
 27    b=input();
 (gdb) n
 Enter the numbers
-7
+5
 28    c=input();
 (gdb) n
 Enter the numbers
-9
+6
 29    largest=cmp(a,b,c);
-(gdb) n
-C is large
-30    return 0;
+(gdb) s
+cmp (a=4, b=5, c=6) at p2final.c:5
+5     if((a>b)&&(a>c))
+(gdb) s
+7     else if((b>a)&&(b>c))
+(gdb) s
+10    printf("C is large\n");
+(gdb) s
+_IO_puts (str=0x55c85ba0092a "C is large") at ioputs.c:33
+33  ioputs.c: No such file or directory.
 (gdb) c
 Continuing.
-[Inferior 1 (process 1410) exited normally]
+C is large
+[Inferior 1 (process 903) exited normally]
 (gdb) 
